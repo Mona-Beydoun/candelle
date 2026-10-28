@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { Order } from "@/lib/orders";
 import OrderFormModal from "./OrderFormModal";
 import OrderDetailsModal from "./OrderDetailsModal";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
 
 const money = (n: number) => `$${n.toFixed(2)}`;
 
@@ -22,6 +23,8 @@ export default function OrderDashboard() {
   // Popup state
   const [formOpen, setFormOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -67,8 +70,21 @@ export default function OrderDashboard() {
     refresh();
   }
 
-  // Derived from the list, so the details popup always shows fresh server data
+  // Derived from the list, so popups always show fresh server data
   const selectedOrder = orders.find((o) => o.id === selectedId) ?? null;
+  const editingOrder = orders.find((o) => o.id === editingId) ?? null;
+  const deletingOrder = orders.find((o) => o.id === deletingId) ?? null;
+
+  function handleEdited() {
+    setEditingId(null);
+    refresh();
+  }
+
+  function handleDeleted() {
+    setDeletingId(null);
+    setSelectedId(null);
+    refresh();
+  }
 
   // Summary counts are derived from the real order data
   const total = orders.length;
@@ -218,8 +234,27 @@ export default function OrderDashboard() {
       {formOpen && (
         <OrderFormModal onClose={() => setFormOpen(false)} onSaved={handleSaved} />
       )}
-      {selectedOrder && (
-        <OrderDetailsModal order={selectedOrder} onClose={() => setSelectedId(null)} />
+      {selectedOrder && !editingOrder && !deletingOrder && (
+        <OrderDetailsModal
+          order={selectedOrder}
+          onClose={() => setSelectedId(null)}
+          onEdit={() => setEditingId(selectedOrder.id)}
+          onDelete={() => setDeletingId(selectedOrder.id)}
+        />
+      )}
+      {editingOrder && (
+        <OrderFormModal
+          order={editingOrder}
+          onClose={() => setEditingId(null)}
+          onSaved={handleEdited}
+        />
+      )}
+      {deletingOrder && (
+        <ConfirmDeleteModal
+          order={deletingOrder}
+          onClose={() => setDeletingId(null)}
+          onDeleted={handleDeleted}
+        />
       )}
     </>
   );
