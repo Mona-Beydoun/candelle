@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Candelle: Nour's Order Desk
 
-## Getting Started
+**Author:** Mona Beydoun
+**Branch:** `assignment-4-nour-order-desk`
 
-First, run the development server:
+## Summary
+
+Candelle is an internal order dashboard for Nour Candle Studio, a small handmade-candle business in Beirut. Nour can add, view, edit, change the status of, and delete orders, and see summary counts for total, pending, and delivered orders. The dashboard talks to a REST API built with Next.js Route Handlers. The server validates all input and calculates every total.
+
+**Stack:** Next.js 16, TypeScript, Tailwind CSS.
+
+## Features
+
+- List orders with customer, product, quantity, total, and status
+- View full order details in a popup
+- Add an order (the server sets the ID, total, and the starting status `Pending`)
+- Edit an order and change its status (`Pending`, `Preparing`, `Delivered`)
+- Delete an order with a confirmation step
+- Summary counts derived from the real order data
+- Loading, error (with retry), and empty states
+
+## Installation and run steps
 
 ```bash
+git clone https://github.com/Mona-Beydoun/candelle.git
+cd candelle
+git switch assignment-4-nour-order-desk
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To run the checks:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Storage limitation
 
-To learn more about Next.js, take a look at the following resources:
+Orders are stored in an in-memory store on the server (`lib/orders.ts`). They reset to three fictional seed orders when the server restarts, and they can also reset when the development server reloads. This approach would not work across multiple server instances. There is no database. This is a deliberate limitation of the assignment.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All customer names and phone numbers in the project are fictional.
 
-## Deploy on Vercel
+## Documents
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Plan](docs/PLAN.md)
+- [API reference](docs/API.md)
+- [Testing](docs/TESTING.md)
+- [Review](docs/REVIEW.md)
+- [Evidence](docs/evidence/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Credits
+
+Hero photo by Treedeo on Pexels.
