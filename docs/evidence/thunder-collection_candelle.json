@@ -1,0 +1,79 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "candelle",
+    "collectionId": "db4423d0-9d4d-48b0-9800-3c0a58d45871",
+    "dateExported": "2026-10-29T17:36:13.847Z",
+    "version": "1.4",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "1b976ac3-6a45-4da0-9ba4-2b6effae42b1",
+            "colId": "db4423d0-9d4d-48b0-9800-3c0a58d45871",
+            "containerId": "",
+            "name": "POST",
+            "url": "http://localhost:3000/api/orders",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2026-10-29T17:14:44.976Z",
+            "modified": "2026-10-29T17:14:44.976Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "   {\r",
+                    "     \"customerName\": \"Demo Customer\",\r",
+                    "     \"phone\": \"DEMO-001\",\r",
+                    "     \"productName\": \"Vanilla Candle\",\r",
+                    "     \"quantity\": 3,\r",
+                    "     \"unitPrice\": 8\r",
+                    "   }"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "fa683e34-e115-462f-a748-edd230728bbf",
+            "colId": "db4423d0-9d4d-48b0-9800-3c0a58d45871",
+            "containerId": "",
+            "name": "GET",
+            "url": "http://localhost:3000/api/orders",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2026-10-29T17:18:33.433Z",
+            "modified": "2026-10-29T17:18:33.433Z",
+            "headers": []
+        },
+        {
+            "_id": "34f28944-51fc-4f9b-a9c8-fca86d6e293e",
+            "colId": "db4423d0-9d4d-48b0-9800-3c0a58d45871",
+            "containerId": "",
+            "name": "PATCH",
+            "url": "http://localhost:3000/api/orders/5cdd45ba-02eb-43ac-a7b4-615e7626db9d",
+            "method": "PATCH",
+            "sortNum": 30000,
+            "created": "2026-10-29T17:22:44.935Z",
+            "modified": "2026-10-29T17:22:44.935Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "   { \"quantity\": 4, \"status\": \"Preparing\" }"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "1fcd96fb-bfd1-40bb-9510-d24245608ab5",
+            "colId": "db4423d0-9d4d-48b0-9800-3c0a58d45871",
+            "containerId": "",
+            "name": "DELETE",
+            "url": "http://localhost:3000/api/orders/5cdd45ba-02eb-43ac-a7b4-615e7626db9d",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2026-10-29T17:24:32.128Z",
+            "modified": "2026-10-29T17:24:32.128Z",
+            "headers": []
+        }
+    ],
+    "ref": "mnnNPeI3PSrsxqO_TO3X35T_7sOXaqR0zidlKloo4aVBCO7MgAoEOjxdiAK5CGdRY6SCRBM7bYWd8zkQtZmCNQ"
+}
